@@ -1,12 +1,5 @@
 //! -------------------------------------------------------------- VARIABLES GLOBALES ----------------------------------------------------------------------
 
-//! variables en rapport avec le portfolio :
-const filters = document.querySelector(".portfolio-filters");
-const gallery = document.querySelector(".gallery");
-
-//! variable token :
-const loged = window.localStorage.getItem("token");
-
 //! variable banniere du mode editeur :
 const publishBanner = document.querySelector(".edition-mode");
 
@@ -20,6 +13,28 @@ const modal = document.querySelector(".modale");
 const modalGallery = document.querySelector(".modale-galerie");
 const modalCross = document.querySelector(".modale-croix");
 const modalGallerybtn = document.querySelector(".modale-galerie-btn");
+
+//! Variables en rapport avec le formulaire d'ajout :
+const modalForm = document.querySelector(".formulaire-ajouts-projets");
+const modalCrossForm = document.querySelector(".modale-croix-form");
+const inputFile = document.querySelector("#file");
+
+//! variables en rapport avec le portfolio :
+const filters = document.querySelector(".portfolio-filters");
+const gallery = document.querySelector(".gallery");
+
+//! variable token :
+const loged = window.localStorage.getItem("token");
+
+//! Variable du bouton SUBMIT dur formulaire d'ajout de projet :
+const formSubmit = document.querySelector(".submit-form-btn");
+
+const modalFormImage = document.querySelector(".modale-form-logo-image img");
+const logoImg = document.querySelector(".modale-form-logo-image i");
+const modaleLogoImage = document.querySelector(".modale-form-logo-image");
+const containerImg = document.querySelector(".miniature");
+const btnImg = document.querySelector(".ajout-image-button");
+const acceptedFormat = document.querySelector(".modale-format-images");
 
 //! ------------------------------------------------------------------ SESSION PROJETS -------------------------------------------------------------------
 

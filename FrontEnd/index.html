@@ -18,8 +18,54 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="index.js" defer></script>
   </head>
+
   <body>
     <div class="fond-modale none"></div>
+    <div class="formulaire-ajouts-projets none">
+      <div class="vector-cross-form">
+        <div class="modale-croix-form"><i class="fa-solid fa-x"></i></div>
+        <div class="modale-vector-form">
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+      </div>
+      <h3 class="modale-title-form">Ajout photo</h3>
+      <form class="formulaire-ajout">
+        <div class="modale-form">
+          <div class="modale-form-logo-image flex">
+            <i class="fa-solid fa-image"></i>
+            <img
+              class="miniature none"
+              src=""
+              alt="miniature du fichier image selectionné"
+            />
+          </div>
+          <button class="ajout-image-button flex">
+            <label for="image">+ Ajouter photo</label>
+            <input
+              type="file"
+              max-size="4000000"
+              name="image"
+              id="file"
+              accept="image/png, image/jpeg,"
+              required
+            />
+          </button>
+          <div class="modale-format-images flex">jpg. png : 4mo max</div>
+        </div>
+        <label for="title">Titre</label>
+        <input type="text" name="title" id="titre" required /><br />
+        <label for="category">Catégorie</label>
+        <select name="category" id="categorie">
+          <!--
+          option,
+          option,
+          option.
+          -->
+        </select>
+        <div class="border-grey"></div>
+        <button type="submit" class="submit-form-btn">Valider</button>
+      </form>
+    </div>
     <div class="modale none">
       <div class="modale-croix"><i class="fa-solid fa-x"></i></div>
       <div class="modale-title">Galerie photo</div>

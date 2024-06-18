@@ -244,6 +244,137 @@ main {
   z-index: 1;
 }
 
+/* --------------------------------------------------------- STYLE FORMULAIRE D'AJOUTS D'IMAGES -------------------------------------------------------*/
+
+.formulaire-ajouts-projets {
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  gap: 15px;
+  border-radius: 10px;
+  margin: 7% 50%;
+  padding: 15px 100px;
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+  background-color: white;
+  z-index: 20;
+}
+
+.modale-croix i,
+.modale-croix-form i {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 50;
+}
+
+.modale-vector-form {
+  position: absolute;
+  left: 20px;
+}
+
+.modale-title-form {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  margin: 5px 0px 5px 0px;
+}
+
+.modale-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #306685;
+  background-color: #e8f1f6;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+  height: 188px;
+  gap: 10px;
+}
+
+.modale-form-logo-image {
+  justify-content: center;
+  max-height: 188px;
+}
+
+.modale-form-logo-image i {
+  font-size: 75px;
+  color: #b9c5cc;
+}
+
+.miniature {
+  width: 100%;
+  max-height: 187px;
+}
+
+.modale-form input {
+  position: absolute;
+  left: 0px;
+  top: -2px;
+  opacity: 0;
+}
+
+.ajout-image-button {
+  position: relative;
+  font-size: 14px;
+  background: #cbd6dc;
+  color: #306685;
+  border: none;
+  padding: 10px 30px;
+}
+
+.modale-format-images {
+  justify-content: center;
+  width: 150px;
+  font-size: 10px;
+}
+
+.formulaire-ajout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 5px;
+}
+
+.formulaire-ajout input {
+  width: 100%;
+  height: 35px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+}
+
+.formulaire-ajout select {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 35px;
+  box-shadow: 0px 4px 14px 0px #00000017;
+  border: none;
+}
+
+.border-grey {
+  border-bottom: 1px solid #b3b3b3;
+  width: 100%;
+}
+
+.submit-form-btn {
+  background-color: #b3b3b3;
+  margin: 20px 25% 8px 27%;
+  padding: 9px 0px;
+  width: 46%;
+  border: none;
+  color: white;
+  font-size: 14px;
+}
+
+.green {
+  background: #1d6154;
+}
+
+/* -------------------------------------------------------------- STYLE FENETRE MODALE GALERIE ---------------------------------------------------------*/
+
 .modale {
   flex-direction: column;
   align-items: center;
