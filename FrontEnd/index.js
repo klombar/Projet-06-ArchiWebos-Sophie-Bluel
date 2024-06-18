@@ -260,6 +260,55 @@ async function leaveModale() {
 }
 leaveModale();
 
+//! Ajout d'une fonction permettant d'ajouter un projet via le formulaire :
+
+async function addProject() {
+  // event au submit :
+  modalForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    formSubmit.classList.add("green");
+
+    // Récupération de la valeur du champ de text Titre dans le formulaire :
+    const currentTitle = document.querySelector("#titre");
+
+    // Récupération de l'ID de l'option selectionné :
+    const select = document.querySelector("#categorie");
+    //const selectedOptionId = select.options[select.selectedIndex].id;
+
+    // Variable formData qui contiendra les objets a envoyer :
+    const addProjectForm = document.querySelector(".formulaire-ajout");
+    const formData = new FormData(addProjectForm);
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${loged}`,
+      },
+      body: formData,
+    });
+    if (response.ok) {
+      currentTitle.value = null;
+      modalFormImage.classList.remove("flex");
+      modalFormImage.classList.add("none");
+      logoImg.classList.remove("none");
+      logoImg.classList.add("flex");
+      btnImg.classList.remove("none");
+      btnImg.classList.add("flex");
+      acceptedFormat.classList.remove("none");
+      acceptedFormat.classList.add("flex");
+      inputFile.classList.remove("none");
+      console.log("Travail crée !");
+      gallery.innerHTML = "";
+      modalGallery.innerHTML = "";
+      const Projects = await getProjects();
+      Projects.forEach((project) => {
+        createProjects(project);
+      });
+      displayModaleProjects();
+    }
+  });
+}
+addProject();
+
 //! ---------------------------------------------------------------- Logout ------------------------------------------------------------------------
 
 //! Déconnecte l'utilisateur :
