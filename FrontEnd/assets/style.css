@@ -138,6 +138,28 @@ body {
   font-family: "Work Sans";
   font-size: 14px;
 }
+
+.edition-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 100%;
+  height: 59px;
+  color: white;
+  gap: 10px;
+  border: 1px solid black;
+  line-height: 59px;
+}
+
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -227,6 +249,14 @@ main {
 #introduction p {
   margin-bottom: 0.5em;
 }
+
+.galerie-editeur {
+  position: absolute;
+  color: black;
+  font-size: 12px;
+  padding: 10px 0 0 20px;
+}
+
 #portfolio h2 {
   text-align: center;
   margin-bottom: 1em;
