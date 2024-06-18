@@ -1,5 +1,26 @@
 //! -------------------------------------------------------------- VARIABLES GLOBALES ----------------------------------------------------------------------
 
+//! variables en rapport avec le portfolio :
+const filters = document.querySelector(".portfolio-filters");
+const gallery = document.querySelector(".gallery");
+
+//! variable token :
+const loged = window.localStorage.getItem("token");
+
+//! variable banniere du mode editeur :
+const publishBanner = document.querySelector(".edition-mode");
+
+//! rapport avec le login  :
+const navLogin = document.querySelector(".login");
+
+//! Variables en rapport avec la modale :
+const projectEditor = document.querySelector(".galerie-editeur");
+const backgroundModal = document.querySelector(".fond-modale");
+const modal = document.querySelector(".modale");
+const modalGallery = document.querySelector(".modale-galerie");
+const modalCross = document.querySelector(".modale-croix");
+const modalGallerybtn = document.querySelector(".modale-galerie-btn");
+
 //! ------------------------------------------------------------------ SESSION PROJETS -------------------------------------------------------------------
 
 //! Recuperation des Projets a partir de l'API :
