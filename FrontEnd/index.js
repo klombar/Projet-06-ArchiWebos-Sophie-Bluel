@@ -215,6 +215,36 @@ async function deleteProject() {
   }
 }
 
+//! Quitte le fond noir et la fenêtre modale au click sur la croix;
+//! redirige sur le formulaire d'ajout de projet au click sur le bouton du formulaire "Ajouter une photo";
+//! Permet le retour sur la galerie de la fenetre modale au click sur la fleche gauche du formulaire d'ajout :
+
+async function leaveModale() {
+  const leftArrow = document.querySelector(".modale-vector-form i");
+  if (loged) {
+    modalCross.addEventListener("click", () => {
+      modal.classList.remove("flex");
+      modal.classList.add("none");
+      backgroundModal.classList.add("none");
+    });
+    modalCrossForm.addEventListener("click", () => {
+      modalForm.classList.add("none");
+      backgroundModal.classList.add("none");
+    });
+    backgroundModal.addEventListener("click", () => {
+      modal.classList.remove("flex");
+      modal.classList.add("none");
+      backgroundModal.classList.add("none");
+      modalForm.classList.add("none");
+    });
+    leftArrow.addEventListener("click", () => {
+      modalForm.classList.add("none");
+      modal.classList.add("flex");
+    });
+  }
+}
+leaveModale();
+
 //! ---------------------------------------------------------------- Logout ------------------------------------------------------------------------
 
 //! Déconnecte l'utilisateur :
