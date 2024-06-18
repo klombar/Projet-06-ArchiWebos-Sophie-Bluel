@@ -143,6 +143,36 @@ async function displayModale() {
 }
 displayModale();
 
+//! Ajout des projets dans la fenêtre modale :
+
+async function displayModaleProjects() {
+  //Je récupère mon TABLEAU de projets
+  const projects = await getProjects();
+  //Boucle forEach de mon tableau de projets :
+  projects.forEach((project) => {
+    /* Pour chaque projet :
+         Créations de mes éléments et ajouts de mes variables locales (propre a ma boucle) :*/
+    const imageLogoContainer = document.createElement("div"); //div qui contiendra l'image et la div avec le logo;
+    const image = document.createElement("img"); //création de l'element img;
+    const logoContainer = document.createElement("div"); //div qui contiendra le logo "i";
+    const trash = document.createElement("i"); //Création de la balise "i" qui contiendra le logo font-awesome "trash";
+
+    /* Ajouts des class préalablement déclarées permettant de les styliser */
+    imageLogoContainer.classList.add("imageLogoContainer");
+    logoContainer.classList.add("logo-container");
+    image.src = project.imageUrl; // Ajouts de la source de l'image vide jusque la;
+    trash.classList.add("fa-solid", "fa-trash"); // Ajout des class permettant l'apparition du logo font-awesome trash;
+    trash.id = project.id; // action de faire corréspondre l'id de l'icon trash a l'id du projet en cours;
+
+    /* Ajouts des éléments crées a l'aide du DOM */
+    logoContainer.appendChild(trash);
+    imageLogoContainer.appendChild(image);
+    imageLogoContainer.appendChild(logoContainer);
+    modalGallery.appendChild(imageLogoContainer);
+  });
+}
+displayModaleProjects();
+
 //! ---------------------------------------------------------------- Logout ------------------------------------------------------------------------
 
 //! Déconnecte l'utilisateur :
