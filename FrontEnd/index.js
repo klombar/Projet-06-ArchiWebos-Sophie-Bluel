@@ -260,6 +260,63 @@ async function leaveModale() {
 }
 leaveModale();
 
+//! fonction de récuperation de l'image :
+async function getFileValue() {
+  const logoImg = document.querySelector(".modale-form-logo-image i");
+  const containerImg = document.querySelector(".miniature");
+  const btnImg = document.querySelector(".ajout-image-button");
+  const acceptedFormat = document.querySelector(".modale-format-images");
+
+  inputFile.addEventListener("change", () => {
+    //ajout d'une écoute d'évènement au change (selection d'un fichier);
+    const files = inputFile.files[0]; // variable récupérant les données de l'input file sous forme de tableau;
+
+    //Ajout d'une alerte pour toute image avec une size supérieur a 4000000ko que l'utilisateur doit fermer ;
+    const size = inputFile.files[0].size;
+    if (size > 4000000) {
+      alert("image trop volumineuse");
+    }
+
+    if (files) {
+      logoImg.classList.add("none");
+      containerImg.classList.remove("none");
+      btnImg.classList.remove("flex");
+      btnImg.classList.add("none");
+      acceptedFormat.classList.remove("flex");
+      acceptedFormat.classList.add("none");
+      containerImg.src = URL.createObjectURL(files); // création d'un URLblob transmit en tant que source a la div qui contiendra la miniature de l'image
+      return containerImg.src;
+    }
+  });
+}
+getFileValue();
+
+//! création de la liste des catégories dans le formulaire d'ajout de projets :
+
+async function createOptionList() {
+  const select = document.querySelector("#categorie");
+  const categorys = await getCategory();
+  categorys.forEach((category) => {
+    const option = document.createElement("option");
+    option.id = category.id;
+    option.value = category.id;
+    option.textContent = category.name;
+    select.appendChild(option);
+  });
+}
+createOptionList();
+
+//! fonction de récuperation de la catégorie selectionnée dans la liste de catégories du formulaire d'ajout de projet :
+
+async function selectedOption() {
+  const select = document.querySelector("#categorie");
+  select.addEventListener("change", async () => {
+    const selectedOptionId = select.options[select.selectedIndex].id;
+    return selectedOptionId;
+  });
+}
+selectedOption();
+
 //! Ajout d'une fonction permettant d'ajouter un projet via le formulaire :
 
 async function addProject() {
