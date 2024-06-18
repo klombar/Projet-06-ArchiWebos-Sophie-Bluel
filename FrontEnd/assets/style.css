@@ -147,6 +147,7 @@ body {
   font-size: 14px;
 }
 
+/* BANNIERE DU MODE EDITION UNE FOIS CONNECTÉ */
 .edition-mode {
   display: flex;
   justify-content: center;
@@ -176,7 +177,7 @@ header {
   margin: 50px 0;
 }
 section {
-  margin: 50px 0;
+  margin: 60px 0;
 }
 
 h1 {
@@ -201,6 +202,8 @@ h2 {
   color: #1d6154;
 }
 
+/* ? ********************************************** NAVIGATION *********************************************** */
+
 nav ul {
   display: flex;
   align-items: center;
@@ -208,6 +211,7 @@ nav ul {
   gap: 30px;
 }
 nav li {
+  padding: 0 10px;
   font-family: "work sans", sans-serif;
   font-size: 1.2em;
   font-weight: 400;
@@ -221,13 +225,14 @@ nav li {
 .login a {
   color: black;
   font-weight: 500;
-  text-decoration: none;
 }
 
-li:hover {
+li a:hover {
   font-weight: bold;
   color: black;
 }
+
+/* ?                                                  **********                                                      */
 
 main {
   display: flex;
@@ -244,7 +249,22 @@ main {
   z-index: 1;
 }
 
-/* --------------------------------------------------------- STYLE FORMULAIRE D'AJOUTS D'IMAGES -------------------------------------------------------*/
+/*? ********************************************** FENÊTRES MODALES *****************************************/
+
+.modale {
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  gap: 15px;
+  border-radius: 10px;
+  margin: 7% 50%;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+  background-color: white;
+  z-index: 20;
+}
 
 .formulaire-ajouts-projets {
   flex-direction: column;
@@ -260,6 +280,8 @@ main {
   background-color: white;
   z-index: 20;
 }
+
+/*? ----------------------------------- STYLE FORMULAIRE D'AJOUTS D'IMAGES ----------------------------------*/
 
 .modale-croix i,
 .modale-croix-form i {
@@ -309,28 +331,6 @@ main {
   max-height: 187px;
 }
 
-.modale-form input {
-  position: absolute;
-  left: 0px;
-  top: -2px;
-  opacity: 0;
-}
-
-.ajout-image-button {
-  position: relative;
-  font-size: 14px;
-  background: #cbd6dc;
-  color: #306685;
-  border: none;
-  padding: 10px 30px;
-}
-
-.modale-format-images {
-  justify-content: center;
-  width: 150px;
-  font-size: 10px;
-}
-
 .formulaire-ajout {
   display: flex;
   flex-direction: column;
@@ -354,6 +354,28 @@ main {
   border: none;
 }
 
+.modale-form input {
+  position: absolute;
+  left: 0px;
+  top: -2px;
+  opacity: 0;
+}
+
+.ajout-image-button {
+  position: relative;
+  font-size: 14px;
+  background: #cbd6dc;
+  color: #306685;
+  border: none;
+  padding: 10px 30px;
+}
+
+.modale-format-images {
+  justify-content: center;
+  width: 150px;
+  font-size: 10px;
+}
+
 .border-grey {
   border-bottom: 1px solid #b3b3b3;
   width: 100%;
@@ -375,29 +397,6 @@ main {
 
 /* -------------------------------------------------------------- STYLE FENETRE MODALE GALERIE ---------------------------------------------------------*/
 
-.modale {
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  gap: 15px;
-  border-radius: 10px;
-  margin: 7% 50%;
-  padding: 15px;
-  width: 100%;
-  max-width: 600px;
-  height: 500px;
-  background-color: white;
-  z-index: 20;
-}
-
-.modale-croix i,
-.modale-croix-form i {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  z-index: 50;
-}
-
 .modale-title {
   font-size: 24px;
   font-family: "Work", sans-serif;
@@ -412,7 +411,7 @@ main {
   row-gap: 5px;
   column-gap: 10px;
   border-bottom: 2px solid lightgray;
-  width: 70%;
+  width: 74%;
   height: 450px;
   max-height: 80%;
   max-width: 420px;
@@ -431,6 +430,12 @@ main {
   position: relative;
 }
 
+.modale-galerie i {
+  color: white;
+  padding: 3px;
+  font-size: 10px;
+}
+
 .logo-container {
   position: absolute;
   top: 5px;
@@ -438,17 +443,6 @@ main {
   z-index: 40;
   border-radius: 2px;
   background-color: black;
-}
-
-.modale-galerie i {
-  color: white;
-  padding: 3px;
-  font-size: 10px;
-}
-
-.border-grey {
-  border-bottom: 1px solid #b3b3b3;
-  width: 100%;
 }
 
 .modale-galerie-btn {
@@ -465,9 +459,14 @@ main {
   z-index: 10;
 }
 
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
 #introduction {
   display: flex;
+  justify-content: center;
   align-items: center;
+  max-width: 1000px;
+  gap: 20px;
 }
 #introduction figure {
   flex: 1;
@@ -475,18 +474,34 @@ main {
 #introduction img {
   display: block;
   margin: auto;
-  width: 80%;
+  width: 100%;
 }
 
 #introduction article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   flex: 1;
 }
+
+article p {
+  width: 404px;
+  padding-left: 60px;
+}
+
 #introduction h2 {
   margin-bottom: 1em;
+  padding-left: 60px;
 }
 
 #introduction p {
   margin-bottom: 0.5em;
+}
+
+#portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .galerie-editeur {
@@ -498,7 +513,7 @@ main {
 
 #portfolio h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 .portfolio-filters {
@@ -527,18 +542,30 @@ button:focus {
 
 .gallery {
   width: 100%;
+  max-width: 1000px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 17px;
+  grid-row-gap: 10px;
 }
 
 .gallery img {
   width: 100%;
 }
 
+figure {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 #login {
   width: 31%;
+  margin: auto;
+}
+
+#contact {
+  width: 50%;
   margin: auto;
 }
 
@@ -549,12 +576,6 @@ button:focus {
   width: 100%;
   max-width: 379px;
   margin: 130px 0 250px 0;
-  text-align: center;
-}
-
-#contact {
-  width: 50%;
-  margin: auto;
 }
 
 #login > *,
@@ -567,16 +588,15 @@ button:focus {
   margin-bottom: 20px;
 }
 
-#contact form {
-  text-align: left;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-}
-
 #login form {
   text-align: left;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#contact form {
+  text-align: left;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -591,7 +611,7 @@ button:focus {
 }
 
 #contact input {
-  height: 50px;
+  height: 51px;
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
