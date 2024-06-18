@@ -107,6 +107,7 @@ section {
 }
 body {
   line-height: 1;
+  height: 100vh;
 }
 ol,
 ul {
@@ -129,7 +130,10 @@ table {
 }
 /** end reset css**/
 body {
-  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
@@ -137,6 +141,8 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  max-width: 1140px;
+  width: 100%;
   margin: 50px 0;
 }
 section {
@@ -164,14 +170,18 @@ h2 {
   font-size: 30px;
   color: #1d6154;
 }
+
 nav ul {
   display: flex;
   align-items: center;
   list-style-type: none;
+  gap: 30px;
 }
 nav li {
-  padding: 0 10px;
+  font-family: "work sans", sans-serif;
   font-size: 1.2em;
+  font-weight: 400;
+  color: black;
 }
 
 .logo-instagram i {
@@ -181,6 +191,7 @@ nav li {
 .login a {
   color: black;
   font-weight: 500;
+  text-decoration: none;
 }
 
 li:hover {
@@ -365,5 +376,5 @@ footer {
 footer nav ul {
   display: flex;
   justify-content: flex-end;
-  margin: 2em;
+  margin: 2em 0px 2em 0px;
 }
