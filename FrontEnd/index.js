@@ -88,3 +88,36 @@ async function filteredButton() {
   });
 }
 filteredButton();
+
+//! -------------------------------------------------------------------- Si connecté -------------------------------------------------------------------------------
+
+//! Ajouts des éléments du mode édition une fois connecté :
+function editorMod() {
+  if (loged) {
+    //si le token correspond;
+    publishBanner.classList.remove("none"); // fait apparaitre la banniere noire qui indique qu'on est sur le mode editeur
+    projectEditor.classList.remove("none"); // fait apparaitre l'éditeur "modifier" a coté des "Mes Projets"
+    navLogin.textContent = "logout"; // login devient logout
+  }
+}
+editorMod();
+
+//! Ajout du fond noir transparent et de la fenêtre modale au click sur "modifier" :
+async function displayModale() {
+  if (loged) {
+    // si le token correspond :
+    projectEditor.addEventListener("click", () => {
+      // au click sur "modifier" :
+      backgroundModal.classList.remove("none"); // le fond noir transparent apparait
+      modal.classList.remove("none"); // la fenêtre modale apparait
+      modal.classList.add("flex");
+    });
+    modalGallerybtn.addEventListener("click", () => {
+      // au click sur le bouton de la galerie :
+      modal.classList.remove("flex");
+      modal.classList.add("none"); // on fait disparaitre la fenêtre modale;
+      modalForm.classList.remove("none"); // on fait apparaitre le formulaire d'ajout d'image
+    });
+  }
+}
+displayModale();
