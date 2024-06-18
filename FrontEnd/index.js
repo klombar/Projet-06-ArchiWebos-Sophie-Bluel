@@ -142,3 +142,20 @@ async function displayModale() {
   }
 }
 displayModale();
+
+//! ---------------------------------------------------------------- Logout ------------------------------------------------------------------------
+
+//! Déconnecte l'utilisateur :
+function unconnect() {
+  if (loged) {
+    // si le token correspond a celui envoyé lors de la réponse du serveur
+    navLogin.addEventListener("click", () => {
+      // Si je click sur navLogin (actuellement logout) :
+      window.localStorage.removeItem("token"); // supprime le token du local storage
+      self.location = "http://127.0.0.1:5500/FrontEnd/index.html"; // actualisation de la page
+      navLogin.textContent = "login"; // change le text de la balise qui contenait "logout" en "login"
+      publishBanner.classList.add("none"); // fait disparaitre la banniere qui indiquait a l'utilisateur qu'il etait connecté
+    });
+  }
+}
+unconnect();
