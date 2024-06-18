@@ -170,8 +170,50 @@ async function displayModaleProjects() {
     imageLogoContainer.appendChild(logoContainer);
     modalGallery.appendChild(imageLogoContainer);
   });
+  deleteProject();
 }
 displayModaleProjects();
+
+//! code pour la suppression d'un projet en dynamique:
+
+async function deleteProject() {
+  const arrayTrash = document.querySelectorAll(".logo-container i"); // je récupere un tableau de tout mes logo poubelle a travers le DOM;
+  //console.log(arrayTrash); // je vérifie que mon tableau a bien été récupéré
+  if (loged) {
+    arrayTrash.forEach((trash) => {
+      //boucle for each pour chaque poubelle
+      trash.addEventListener("click", async (e) => {
+        e.preventDefault();
+        // a l'évenement au click
+        const id = trash.id; // je récupere l'id de la poubelle en cour
+        const init = {
+          // je déclare la requête que je veux envoyer
+          method: "DELETE", // requete DELETE pour supprimer
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${loged}`,
+          },
+        };
+        // serveur sur lequel je fais ma requete + ajout de l'ID déclaré auparavant a supprimer+ ajout de la requête précédement declarée a envoyer
+        const response = await fetch(
+          `http://localhost:5678/api/works/${id}`,
+          init
+        );
+        console.log(response);
+        if (response.ok === true) {
+          console.log("projet supprimé !");
+          gallery.innerHTML = "";
+          modalGallery.innerHTML = "";
+          const Projects = await getProjects();
+          Projects.forEach((project) => {
+            createProjects(project);
+          });
+          displayModaleProjects();
+        }
+      });
+    });
+  }
+}
 
 //! ---------------------------------------------------------------- Logout ------------------------------------------------------------------------
 
