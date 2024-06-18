@@ -227,6 +227,11 @@ nav li {
   font-weight: 500;
 }
 
+#login p {
+  color: red;
+  text-decoration: underline;
+}
+
 li a:hover {
   font-weight: bold;
   color: black;
@@ -482,11 +487,13 @@ main {
   flex-direction: column;
   gap: 10px;
   flex: 1;
+  max-height: 290px;
+  overflow-y: auto;
 }
 
 article p {
-  width: 404px;
   padding-left: 60px;
+  max-width: 404px;
 }
 
 #introduction h2 {

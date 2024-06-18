@@ -41,7 +41,8 @@ async function connection() {
     }
     // condition pour faire disparaitre le message d'erreur si les identifiants sont bons :
     else {
-      errorMessage.textContent = "Erreur dans l’identifiant ou le mot de passe";
+      errorMessage.textContent =
+        "Erreur dans l’identifiant ou le mot de passe !";
     }
   });
 }

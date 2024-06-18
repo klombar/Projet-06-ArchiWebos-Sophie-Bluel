@@ -214,7 +214,6 @@ async function deleteProject() {
           `http://localhost:5678/api/works/${id}`,
           init
         );
-        console.log(response);
         if (response.ok === true) {
           console.log("projet supprimé !");
           gallery.innerHTML = "";
@@ -327,7 +326,10 @@ async function addProject() {
 
     // Récupération de la valeur du champ de text Titre dans le formulaire :
     const currentTitle = document.querySelector("#titre");
-
+    console.log(currentTitle.value);
+    if (currentTitle.value === "") {
+      alert("Veuillez ajouter un titre a votre image !");
+    }
     // Récupération de l'ID de l'option selectionné :
     const select = document.querySelector("#categorie");
     //const selectedOptionId = select.options[select.selectedIndex].id;
