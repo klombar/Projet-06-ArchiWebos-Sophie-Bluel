@@ -382,7 +382,7 @@ main {
 }
 
 .border-grey {
-  border-bottom: 1px solid #b3b3b3;
+  border-bottom: 2px solid #b3b3b3;
   width: 100%;
 }
 
@@ -415,7 +415,7 @@ main {
   flex-wrap: wrap;
   row-gap: 5px;
   column-gap: 10px;
-  border-bottom: 2px solid lightgray;
+  border-bottom: 2px solid #b3b3b3;
   width: 74%;
   height: 450px;
   max-height: 80%;

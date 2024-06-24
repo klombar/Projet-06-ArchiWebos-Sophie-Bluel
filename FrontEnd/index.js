@@ -11,8 +11,8 @@ const projectEditor = document.querySelector(".galerie-editeur");
 const backgroundModal = document.querySelector(".fond-modale");
 const modal = document.querySelector(".modale");
 const modalGallery = document.querySelector(".modale-galerie");
-const modalCross = document.querySelector(".modale-croix");
 const modalGallerybtn = document.querySelector(".modale-galerie-btn");
+const modalCross = document.querySelector(".modale-croix");
 
 //! Variables en rapport avec le formulaire d'ajout :
 const modalForm = document.querySelector(".formulaire-ajouts-projets");
@@ -20,20 +20,18 @@ const modalCrossForm = document.querySelector(".modale-croix-form");
 const inputFile = document.querySelector("#file");
 
 //! variables en rapport avec le portfolio :
-const filters = document.querySelector(".portfolio-filters");
+const containerFilters = document.querySelector(".portfolio-filters");
 const gallery = document.querySelector(".gallery");
 
 //! variable token :
 const loged = window.localStorage.getItem("token");
 
 //! Variable du bouton SUBMIT dur formulaire d'ajout de projet :
-const formSubmit = document.querySelector(".submit-form-btn");
-
+const modalFormSubmitBtn = document.querySelector(".submit-form-btn");
 const modalFormImage = document.querySelector(".modale-form-logo-image img");
-const logoImg = document.querySelector(".modale-form-logo-image i");
-const modaleLogoImage = document.querySelector(".modale-form-logo-image");
+const logoFile = document.querySelector(".modale-form-logo-image i");
 const containerImg = document.querySelector(".miniature");
-const btnImg = document.querySelector(".ajout-image-button");
+const btnAddFile = document.querySelector(".ajout-image-button");
 const acceptedFormat = document.querySelector(".modale-format-images");
 
 //! ------------------------------------------------------------------ SESSION PROJETS -------------------------------------------------------------------
@@ -90,7 +88,7 @@ async function createButton() {
     const button = document.createElement("button");
     button.textContent = category.name;
     button.id = category.id;
-    filters.appendChild(button);
+    containerFilters.appendChild(button);
   });
 }
 createButton();
@@ -139,7 +137,7 @@ function editorMod() {
 editorMod();
 
 //! Ajout du fond noir transparent et de la fenêtre modale au click sur "modifier" :
-async function displayModale() {
+function displayModale() {
   if (loged) {
     // si le token correspond :
     projectEditor.addEventListener("click", () => {
@@ -203,9 +201,8 @@ async function deleteProject() {
         const id = trash.id; // je récupere l'id de la poubelle en cour
         const init = {
           // je déclare la requête que je veux envoyer
-          method: "DELETE", // requete DELETE pour supprimer
+          method: "DELETE", // requête DELETE pour supprimer
           headers: {
-            "content-type": "application/json",
             Authorization: `Bearer ${loged}`,
           },
         };
@@ -214,7 +211,7 @@ async function deleteProject() {
           `http://localhost:5678/api/works/${id}`,
           init
         );
-        if (response.ok === true) {
+        if (response.ok) {
           console.log("projet supprimé !");
           gallery.innerHTML = "";
           modalGallery.innerHTML = "";
@@ -233,7 +230,7 @@ async function deleteProject() {
 //! redirige sur le formulaire d'ajout de projet au click sur le bouton du formulaire "Ajouter une photo";
 //! Permet le retour sur la galerie de la fenetre modale au click sur la fleche gauche du formulaire d'ajout :
 
-async function leaveModale() {
+function leaveModale() {
   const leftArrow = document.querySelector(".modale-vector-form i");
   if (loged) {
     modalCross.addEventListener("click", () => {
@@ -261,10 +258,8 @@ leaveModale();
 
 //! fonction de récuperation de l'image :
 async function getFileValue() {
-  const logoImg = document.querySelector(".modale-form-logo-image i");
+  const logoFile = document.querySelector(".modale-form-logo-image i");
   const containerImg = document.querySelector(".miniature");
-  const btnImg = document.querySelector(".ajout-image-button");
-  const acceptedFormat = document.querySelector(".modale-format-images");
 
   inputFile.addEventListener("change", () => {
     //ajout d'une écoute d'évènement au change (selection d'un fichier);
@@ -277,10 +272,10 @@ async function getFileValue() {
     }
 
     if (files) {
-      logoImg.classList.add("none");
+      logoFile.classList.add("none");
       containerImg.classList.remove("none");
-      btnImg.classList.remove("flex");
-      btnImg.classList.add("none");
+      btnAddFile.classList.remove("flex");
+      btnAddFile.classList.add("none");
       acceptedFormat.classList.remove("flex");
       acceptedFormat.classList.add("none");
       containerImg.src = URL.createObjectURL(files); // création d'un URLblob transmit en tant que source a la div qui contiendra la miniature de l'image
@@ -307,9 +302,9 @@ createOptionList();
 
 //! fonction de récuperation de la catégorie selectionnée dans la liste de catégories du formulaire d'ajout de projet :
 
-async function selectedOption() {
+function selectedOption() {
   const select = document.querySelector("#categorie");
-  select.addEventListener("change", async () => {
+  select.addEventListener("change", () => {
     const selectedOptionId = select.options[select.selectedIndex].id;
     return selectedOptionId;
   });
@@ -322,7 +317,7 @@ async function addProject() {
   // event au submit :
   modalForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    formSubmit.classList.add("green");
+    modalFormSubmitBtn.classList.add("green");
 
     // Récupération de la valeur du champ de text Titre dans le formulaire :
     const currentTitle = document.querySelector("#titre");
@@ -330,13 +325,15 @@ async function addProject() {
     if (currentTitle.value === "") {
       alert("Veuillez ajouter un titre a votre image !");
     }
-    // Récupération de l'ID de l'option selectionné :
-    const select = document.querySelector("#categorie");
-    //const selectedOptionId = select.options[select.selectedIndex].id;
 
     // Variable formData qui contiendra les objets a envoyer :
     const addProjectForm = document.querySelector(".formulaire-ajout");
     const formData = new FormData(addProjectForm);
+    // Log de mes entrées :
+    for (pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
+
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
@@ -344,25 +341,30 @@ async function addProject() {
       },
       body: formData,
     });
+
     if (response.ok) {
+      // vidage de mon formulaire d'ajout si la réponse est "ok" :
       currentTitle.value = null;
       modalFormImage.classList.remove("flex");
       modalFormImage.classList.add("none");
-      logoImg.classList.remove("none");
-      logoImg.classList.add("flex");
-      btnImg.classList.remove("none");
-      btnImg.classList.add("flex");
+      logoFile.classList.remove("none");
+      logoFile.classList.add("flex");
+      btnAddFile.classList.remove("none");
+      btnAddFile.classList.add("flex");
       acceptedFormat.classList.remove("none");
       acceptedFormat.classList.add("flex");
       inputFile.classList.remove("none");
+      // log pour verification :
       console.log("Travail crée !");
+      // Vidage de mes galeries :
       gallery.innerHTML = "";
       modalGallery.innerHTML = "";
+      // Nouvelle mise en place de mes projets une fois un projet ajouté
       const Projects = await getProjects();
       Projects.forEach((project) => {
-        createProjects(project);
+        createProjects(project); // re-création de la liste des projets dans la galerie après ajout
       });
-      displayModaleProjects();
+      displayModaleProjects(); // re-création de la liste des projets dans la galerie de la modale après ajout
     }
   });
 }
@@ -377,9 +379,8 @@ function unconnect() {
     navLogin.addEventListener("click", () => {
       // Si je click sur navLogin (actuellement logout) :
       window.localStorage.removeItem("token"); // supprime le token du local storage
-      self.location = "http://127.0.0.1:5500/index.html"; // actualisation de la page
+      self.location.replace("http://127.0.0.1:5500/index.html"); // actualisation de la page
       navLogin.textContent = "login"; // change le text de la balise qui contenait "logout" en "login"
-      publishBanner.classList.add("none"); // fait disparaitre la banniere qui indiquait a l'utilisateur qu'il etait connecté
     });
   }
 }
