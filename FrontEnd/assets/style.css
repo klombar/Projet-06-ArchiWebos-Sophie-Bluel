@@ -342,6 +342,8 @@ main {
   justify-content: center;
   align-items: start;
   gap: 5px;
+  width: 100%;
+  max-width: 420px;
 }
 
 .formulaire-ajout input {
@@ -413,10 +415,9 @@ main {
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
-  row-gap: 5px;
-  column-gap: 10px;
+  column-gap: 4px;
   border-bottom: 2px solid #b3b3b3;
-  width: 74%;
+  width: 70%;
   height: 450px;
   max-height: 80%;
   max-width: 420px;
