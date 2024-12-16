@@ -1,8 +1,8 @@
+# Projet Portfolio Architecte d'Intérieur - Développement Front-End
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c81db485-3a33-4027-8603-c31488a8b540" alt="Bannière projet Sophie Bluel" width="100%" />
 </p>
-
-# Projet Portfolio Architecte d'Intérieur - Développement Front-End
 
 ## Contexte
 
